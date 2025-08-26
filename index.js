@@ -1,12 +1,19 @@
 import express from "express";
 import Stripe from "stripe";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL, // example: "http://localhost:5173" or your deployed frontend URL
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use(
   express.json({
     verify: (req, res, buf) => {
