@@ -45,8 +45,8 @@ app.post("/api/payment/create-session", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL}/submit?payment=success`,
-      cancel_url: `${process.env.CLIENT_URL}/submit?payment=cancel`,
+      success_url: `${process.env.CLIENT_URL}/submit-success`,
+      cancel_url: `${process.env.CLIENT_URL}/submit-cancel`,
       metadata: {
         productType: "Phone Repairing",
       },
